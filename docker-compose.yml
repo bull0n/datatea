@@ -9,10 +9,24 @@ services:
       - POSTGRES_PASSWORD=dev
   backend:
     build: datatea-backend
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./datatea-backend:/sources
     ports:
       - "8000:8000"
     depends_on:
       - db
+  frontend:
+    image: node:latest
+    volumes:
+      - ./datatea-frontend:/usr/src/app
+    working_dir: /usr/src/app
+    command: bash -c "
+      ls -al &&
+      npm run serve"
+    ports:
+      - "8080:8080"
+    depends_on: 
+      - backend
