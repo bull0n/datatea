@@ -1,0 +1,6 @@
+[submodule "datatea-frontend"]
+	path = datatea-frontend
+	url = git@github.com:bull0n/datatea-frontend.git
+[submodule "datatea-backend"]
+	path = datatea-backend
+	url = git@github.com:bull0n/datatea-backend.git
