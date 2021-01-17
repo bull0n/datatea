@@ -12,6 +12,12 @@ services:
     command: bash -c "
       python manage.py migrate &&
       python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_NAME=datatea
+      - DB_USERNAME=datatea
+      - DB_PASSWORD=dev
+      - DB_HOST=db
+      - DB_PORT=5432
     volumes:
       - ./datatea-backend:/sources
     ports:
@@ -23,9 +29,7 @@ services:
     volumes:
       - ./datatea-frontend:/usr/src/app
     working_dir: /usr/src/app
-    command: bash -c "
-      ls -al &&
-      npm run serve"
+    command: npm run serve
     ports:
       - "8080:8080"
     depends_on: 
