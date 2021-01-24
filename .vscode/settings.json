@@ -1,4 +1,6 @@
 {
   "python.pythonPath": "datatea-backend/venv/bin/python",
+  "python.envFile": ".env",
+  "python.autoComplete.extraPaths": ["datatea-backend"],
   "editor.tabSize": 2
 }
